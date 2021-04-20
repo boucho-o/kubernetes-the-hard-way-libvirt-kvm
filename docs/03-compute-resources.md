@@ -100,7 +100,7 @@ Create three compute instances which will host the Kubernetes **control plane**.
 ```
 # for node in master00 master01 master02; do
  	kcli create vm -i centos7 -P disks=[50] -P nets=[k8s-net] -P memory=16384 -P numcpus=4 \
-        -P cmds=["yum -y update"] -P reservedns=yes -P reserveip=yes -P reservehost=yes ${node}
+        -P cmds=["yum -y update"] -P reservedns=true -P reserveip=true -P reservehost=true ${node}
 done
 ```
 
@@ -123,7 +123,7 @@ In order to have a proper Kubernetes high available environment, a Load balancer
 
 ```
 # kcli create vm -i centos7 -P disks=[20] -P nets=[k8s-net] -P memory=2048 -P numcpus=2 \
-  -P cmds=["yum -y update"] -P reserverdns=yes -P reserverip=yes -P reserverhost=yes loadbalancer
+  -P cmds=["yum -y update"] -P reservedns=true -P reserveip=true -P reservehost=true loadbalancer
 ```
 
 Check your **loadbalancer** instance is up and running
